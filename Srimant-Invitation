@@ -3,165 +3,298 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>સીમંત સંસ્કાર આમંત્રણ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Laila:wght@400;700&display=swap" rel="stylesheet">
+    <title>સીમંત સંસ્કાર - સત્યેન અને માર્ગી</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Gujarati:wght@400;700;900&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
         :root {
-            --gold: #D4AF37;
-            --deep-red: #8B0000;
-            --soft-pink: #FFF0F5;
-            --text-color: #333;
+            --primary-gold: #c59d5f;
+            --dark-maroon: #5a0000;
+            --cream-bg: #fffbf0;
+            --text-color: #2c2c2c;
         }
 
         body {
-            font-family: 'Laila', sans-serif;
-            background-color: var(--soft-pink);
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            font-family: 'Noto Serif Gujarati', serif;
+            background-color: var(--cream-bg);
+            background-image: url("https://www.transparenttextures.com/patterns/cream-paper.png");
             color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        /* Decorative Background Elements */
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.05;
+            background: radial-gradient(circle, #5a0000 1px, transparent 1px);
+            background-size: 30px 30px;
         }
 
         .container {
-            background: white;
-            max-width: 500px;
-            width: 90%;
-            margin: 20px;
-            padding: 40px;
-            border: 8px double var(--gold);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 10px;
+        }
+
+        /* Main Card Design */
+        .card {
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            padding: 40px 20px;
             text-align: center;
             position: relative;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            animation: floatUp 1.5s ease-out;
         }
 
-        .header-icons {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
+        /* Gold Border Effect */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -5px; bottom: -5px;
+            left: -5px; right: -5px;
+            background: linear-gradient(45deg, #c59d5f, #ffe6a7, #c59d5f);
+            z-index: -1;
+            border-radius: 25px;
         }
 
-        .header-icons img {
-            width: 60px;
-            height: auto;
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 10px; bottom: 10px;
+            left: 10px; right: 10px;
+            border: 1px solid var(--primary-gold);
+            border-radius: 15px;
+            pointer-events: none;
+        }
+
+        /* Header Section */
+        .shloka {
+            color: var(--dark-maroon);
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .ganesh-img {
+            width: 70px;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 2px 5px rgba(197, 157, 95, 0.5));
         }
 
         h1 {
-            color: var(--deep-red);
-            font-size: 2.5em;
+            color: var(--primary-gold);
+            font-size: 2.2rem;
             margin: 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
-        h2 {
-            color: var(--gold);
-            font-size: 1.8em;
-            margin-bottom: 20px;
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--dark-maroon);
+            margin-bottom: 25px;
+            font-weight: 700;
         }
 
-        .names {
-            background: #fdf5e6;
-            padding: 20px;
-            border-radius: 10px;
+        /* Couple Names */
+        .couple-section {
+            background: linear-gradient(to right, transparent, #fffbf0, transparent);
+            padding: 20px 0;
             margin: 20px 0;
-            border-left: 5px solid var(--gold);
         }
 
-        .couple-name {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: #4a4a4a;
+        .name {
+            font-size: 1.8rem;
+            color: var(--dark-maroon);
+            font-weight: 900;
+            margin: 5px 0;
         }
 
-        .details-box {
-            margin-top: 30px;
+        .weds {
+            font-family: 'Great Vibes', cursive;
+            color: var(--primary-gold);
+            font-size: 2rem;
+            margin: 0;
+        }
+
+        /* Invite Text */
+        .invite-text {
             line-height: 1.8;
+            font-size: 1rem;
+            color: #555;
+            margin: 20px 0;
         }
 
-        .event-grid {
+        /* Event Details Grid */
+        .events-box {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
-            margin-top: 20px;
+            margin: 30px 0;
         }
 
-        .event-card {
-            background: #fffafa;
+        .event-item {
+            background: #fff8e1;
             padding: 15px;
-            border: 1px solid #eee;
-            border-radius: 8px;
+            border-radius: 10px;
+            border: 1px solid #ffe082;
+            transition: transform 0.3s;
         }
 
-        .btn-map {
-            display: inline-block;
-            margin-top: 25px;
-            padding: 12px 25px;
-            background-color: var(--deep-red);
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
+        .event-item:hover {
+            transform: translateY(-5px);
+            background: #fff3cd;
+        }
+
+        .event-icon {
+            font-size: 1.5rem;
+            color: var(--dark-maroon);
+            margin-bottom: 8px;
+        }
+
+        .event-title {
             font-weight: bold;
+            color: var(--primary-gold);
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        /* Date Highlight */
+        .big-date {
+            background: var(--dark-maroon);
+            color: white;
+            padding: 10px 30px;
+            border-radius: 50px;
+            display: inline-block;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(90, 0, 0, 0.3);
+        }
+
+        /* Location Button */
+        .map-btn {
+            display: block;
+            background: linear-gradient(45deg, #c59d5f, #e8c686);
+            color: var(--dark-maroon);
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: bold;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(197, 157, 95, 0.4);
             transition: 0.3s;
         }
 
-        .btn-map:hover {
-            background-color: var(--gold);
+        .map-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(197, 157, 95, 0.6);
         }
 
-        .footer-note {
-            margin-top: 30px;
-            font-size: 0.9em;
-            color: #666;
+        /* Footer */
+        .footer {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            border-top: 1px dashed var(--primary-gold);
+            padding-top: 20px;
+        }
+
+        /* Animation */
+        @keyframes floatUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 400px) {
+            h1 { font-size: 1.8rem; }
+            .name { font-size: 1.5rem; }
+            .events-box { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="header-icons">
-        <span>॥ શ્રી ગણેશાય નમઃ ॥</span>
-        <span>॥ શ્રી મહાકાળી માતાય નમઃ ॥</span>
-    </div>
+    <div class="bg-pattern"></div>
 
-    <h1>આમંત્રણ</h1>
-    <h2>સીમંત સંસ્કાર</h2>
+    <div class="container">
+        <div class="card">
+            <div class="shloka">॥ શ્રી ગણેશાય નમઃ ॥<br>॥ શ્રી મહાકાળી માતાય નમઃ ॥</div>
+            
+            <img src="https://cdn-icons-png.flaticon.com/512/2800/2800179.png" alt="Ganeshji" class="ganesh-img">
 
-    <p>સ્નેહીશ્રી,</p>
-    <p>સહર્ષ જણાવવાનું કે શ્રી મહાકાળી માતાજીની અસીમ કૃપાથી <br> 
-    <strong>ગં.સ્વ. વૈશાલીબેન તથા સ્વ. અખિલેશભાઈ પંચાલ</strong> ના સુપુત્ર</p>
+            <h1>આમંત્રણ</h1>
+            <div class="subtitle">સીમંત સંસ્કાર</div>
 
-    <div class="names">
-        <div class="couple-name">ચિ. સત્યેન ના ધર્મપત્ની</div>
-        <div class="couple-name" style="color: var(--deep-red); font-size: 1.8em;">અ.સૌ. માર્ગી</div>
-    </div>
+            <p class="invite-text">
+                સ્નેહીશ્રી,<br>
+                સહર્ષ જણાવવાનું કે <strong>શ્રી મહાકાળી માતાજી</strong> ની અસીમ કૃપાથી<br>
+                ગં.સ્વ. વૈશાલીબેન તથા સ્વ. અખિલેશભાઈ પંચાલ ના સુપુત્ર
+            </p>
 
-    <p>ના સીમંત વિધી સવંત ૨૦૮૨ ના ફાગણ સુદ-૫ ને રવિવાર <br>
-    <strong>તા. ૨૨-૦૨-૨૦૨૬</strong> ના શુભદિને રાખેલ છે.</p>
+            <div class="couple-section">
+                <div class="name">ચિ. સત્યેન</div>
+                <div class="weds">w/</div>
+                <div class="name">અ.સૌ. માર્ગી</div>
+            </div>
 
-    <div class="event-grid">
-        <div class="event-card">
-            <strong>॥ સીમંતવિધી ॥</strong><br>
-            સવારે ૧૦:૩૦ કલાકે
+            <p class="invite-text">
+                ના સીમંત વિધી પ્રસંગે આપને હાર્દિક આમંત્રણ છે.
+            </p>
+
+            <div class="big-date">
+                <i class="far fa-calendar-alt"></i> ૨૨ ફેબ્રુઆરી ૨૦૨૬
+            </div>
+            <div style="color: #666; font-size: 0.9rem; margin-top: -10px; margin-bottom: 20px;">
+                મહા સુદ - ૫ (રવિવાર)
+            </div>
+
+            <div class="events-box">
+                <div class="event-item">
+                    <i class="fas fa-praying-hands event-icon"></i>
+                    <span class="event-title">સીમંત વિધી</span>
+                    સવારે ૧૦:૩૦ કલાકે
+                </div>
+                <div class="event-item">
+                    <i class="fas fa-utensils event-icon"></i>
+                    <span class="event-title">ભોજન સમારંભ</span>
+                    બપોરે ૧૨:૦૦ થી...
+                </div>
+            </div>
+
+            <div class="footer">
+                <i class="fas fa-map-marker-alt" style="color: var(--dark-maroon); font-size: 1.5rem; margin-bottom: 10px;"></i>
+                <br>
+                <strong>॥ શુભ સ્થળ ॥</strong><br>
+                બંસી કાઠીયાવાડી હોટલ,<br>
+                આબુ હાઇવે, પાલનપુર
+            </div>
+
+            <a href="https://www.google.com/maps/search/?api=1&query=Bansi+Kathiyawadi+Hotel+Palanpur" target="_blank" class="map-btn">
+                📍 લોકેશન જોવા માટે અહીં ક્લિક કરો
+            </a>
+
+            <div class="footer" style="margin-top: 30px;">
+                <strong>॥ નિમંત્રક ॥</strong><br>
+                પંચાલ પરિવાર<br>
+                <span style="font-size: 0.8em; color: #888;">(હેયાન, પરમ)</span>
+            </div>
+
         </div>
-        <div class="event-card">
-            <strong>॥ ભોજન સમારંભ ॥</strong><br>
-            બપોરે ૧૨:૦૦ થી...
-        </div>
     </div>
-
-    <div class="details-box">
-        <strong>॥ શુભ સ્થળ ॥</strong><br>
-        બંસી કાઠીયાવાડી હોટલ, આબુ હાઇવે, પાલનપુર<br>
-        <a href="https://www.google.com/maps/search/Bansi+Kathiyawadi+Hotel+Palanpur" target="_blank" class="btn-map">📍 Google Map પર જુઓ</a>
-    </div>
-
-    <div class="footer-note">
-        <strong>॥ નિમંત્રક ॥</strong><br>
-        પંચાલ પરિવાર
-    </div>
-</div>
 
 </body>
 </html>
